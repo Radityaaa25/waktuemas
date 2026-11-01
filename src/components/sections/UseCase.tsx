@@ -7,13 +7,18 @@ export function UseCase() {
     <section
       id="use-case"
       aria-labelledby="use-case-title"
-      className="section-block border-b border-white/5"
+      className="section-block border-b border-border bg-surface"
     >
       <div className="page-shell">
         <div className="grid items-start gap-6 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7" data-use-case-visual>
-            <div className="card-surface relative aspect-[5/4] overflow-hidden sm:aspect-[16/11] lg:aspect-[4/3.4]">
+            <div className="card-surface relative aspect-[5/4] overflow-hidden sm:aspect-[16/11] lg:aspect-[4/3.4]" data-scene-wrap>
               <UseCaseScene className="absolute inset-0 h-full w-full opacity-90" />
+              <div
+                className="pointer-events-none absolute inset-0 bg-text/[0.02]"
+                aria-hidden="true"
+                data-usecase-shade
+              />
               <div
                 className="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent"
                 aria-hidden="true"
@@ -22,7 +27,7 @@ export function UseCase() {
                 <p className="max-w-xs text-xs leading-relaxed text-muted">
                   {ui.useCase.visualLabel}
                 </p>
-                <span className="rounded-full border border-white/15 bg-bg/60 px-3 py-1.5 font-mono text-[0.625rem] tracking-[0.14em] text-text uppercase backdrop-blur">
+                <span className="rounded-full border border-border bg-bg/60 px-3 py-1.5 font-mono text-[0.625rem] tracking-[0.14em] text-text uppercase backdrop-blur">
                   {ui.useCase.locationTag}
                 </span>
               </div>
@@ -50,7 +55,7 @@ export function UseCase() {
               {useCase.beats.map((beat) => (
                 <li
                   key={beat.time}
-                  className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-3.5"
+                  className="flex gap-3 rounded-xl border border-border bg-text/[0.02] p-3.5"
                 >
                   <CornerDownRight
                     aria-hidden="true"

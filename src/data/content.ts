@@ -16,9 +16,17 @@ export interface SourceNote {
   todoVerify?: boolean;
 }
 
+export interface CountUp {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+}
+
 export interface StatCardContent {
   id: string;
   value: string;
+  count?: CountUp;
   valueLabel: string;
   title: string;
   description: string;
@@ -127,6 +135,7 @@ export const problem = {
       },
       direction: "left",
       tone: "alert",
+      count: { value: 41.7, suffix: "%", decimals: 1 },
     },
     {
       id: "card-time",
@@ -160,6 +169,7 @@ export const problem = {
       },
       direction: "down",
       tone: "hope",
+      count: { value: 360, prefix: "\u00b1", suffix: " ribu" },
       // TODO-VERIFY: PRD §12 menandai angka \u00b1360.000 (sumber sekunder).
       todoVerify: true,
     },

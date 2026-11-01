@@ -8,7 +8,7 @@ export function Problem() {
     <section
       id="masalah"
       aria-labelledby="masalah-title"
-      className="section-block border-b border-white/5"
+      className="section-block border-b border-border bg-bg"
     >
       <div className="page-shell">
         <div className="grid items-end gap-8 lg:grid-cols-12">

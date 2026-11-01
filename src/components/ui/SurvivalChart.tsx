@@ -59,6 +59,7 @@ export function SurvivalChart({ className }: { className?: string }) {
         <path
           d="M64 72 C126 92 158 132 226 168 C294 204 336 228 404 248 C472 267 548 282 680 292 L680 306 L64 306 Z"
           fill="url(#chart-area)"
+          data-chart-area
         />
         <path
           d="M64 72 C126 92 158 132 226 168 C294 204 336 228 404 248 C472 267 548 282 680 292"
@@ -110,7 +111,7 @@ export function SurvivalChart({ className }: { className?: string }) {
         {problem.chart.caption}{" "}
         <a
           href={`#ref-${problem.chart.sourceId}`}
-          className="underline decoration-white/25 underline-offset-4 transition-colors hover:text-text"
+          className="underline decoration-text/20 underline-offset-4 transition-colors hover:text-text"
         >
           {ui.problem.chartSeeSource}
         </a>

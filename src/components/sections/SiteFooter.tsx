@@ -3,7 +3,7 @@ import { nav, site, ui } from "@/data/content";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-surface/40">
+    <footer className="border-t border-border bg-bg-alt">
       <div className="page-shell grid gap-8 py-10 md:grid-cols-12 md:py-12">
         <div className="md:col-span-5">
           <p className="font-display text-2xl font-semibold">{site.name}</p>
@@ -65,7 +65,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-white/5">
+      <div className="border-t border-border">
         <div className="page-shell flex flex-wrap items-center justify-between gap-2 py-4 text-[0.6875rem] text-muted">
           <span>{ui.closing.copyright}</span>
           <span className="numeric">{site.event}</span>

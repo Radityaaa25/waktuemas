@@ -34,6 +34,7 @@ export function References() {
               key={reference.id}
               id={`ref-${reference.id}`}
               className="card-surface scroll-mt-24 p-5"
+              data-ref-card
             >
               <div className="flex items-start justify-between gap-3">
                 <span className="numeric mt-0.5 text-xs text-muted">
@@ -67,7 +68,7 @@ export function References() {
                       href={href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-11 items-center gap-1 underline decoration-white/25 underline-offset-4 transition-colors hover:text-text"
+                      className="inline-flex min-h-11 items-center gap-1 underline decoration-text/20 underline-offset-4 transition-colors hover:text-text"
                     >
                       {reference.identifier}
                       <ArrowUpRight aria-hidden="true" className="size-3.5" />

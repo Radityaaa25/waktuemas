@@ -20,18 +20,20 @@ export function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden border-b border-white/5"
+      className="relative isolate overflow-hidden border-b border-border bg-surface"
+      data-hero
     >
       <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-70"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-80"
         aria-hidden="true"
+        data-hero-glow
         style={{
           background:
-            "radial-gradient(60% 50% at 20% 20%, rgba(255,59,78,0.16), transparent 70%), radial-gradient(50% 50% at 85% 10%, rgba(45,212,191,0.12), transparent 70%)",
+            "radial-gradient(60% 50% at 18% 18%, rgba(216,27,60,0.12), transparent 70%), radial-gradient(50% 50% at 85% 10%, rgba(13,148,136,0.16), transparent 70%), radial-gradient(45% 45% at 55% 0%, rgba(3,105,161,0.10), transparent 70%)",
         }}
       />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-44 text-alert/70 opacity-30 [mask-image:linear-gradient(to_top,black,transparent)]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-44 text-alert opacity-20 [mask-image:linear-gradient(to_top,black,transparent)]"
         aria-hidden="true"
         data-hero-ecg
       >
@@ -70,7 +72,7 @@ export function Hero() {
               {hero.hookSource}{" "}
               <a
                 href={`#ref-${hero.hookSourceId}`}
-                className="underline decoration-white/25 underline-offset-4 transition-colors hover:text-text"
+                className="underline decoration-text/20 underline-offset-4 transition-colors hover:text-text"
               >
                 {ui.hero.sourceLink}
               </a>
@@ -93,7 +95,7 @@ export function Hero() {
               </a>
               <a
                 href={ui.hero.secondaryHref}
-                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/20 px-6 text-sm font-medium text-text transition-colors hover:bg-white/5"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-border-strong px-6 text-sm font-medium text-text transition-colors hover:bg-text/5"
               >
                 {ui.hero.secondaryCta}
                 <ArrowDown aria-hidden="true" className="size-4" />
@@ -112,12 +114,12 @@ export function Hero() {
                   />
                   {ui.hero.ecgBadge}
                 </span>
-                <span className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[0.625rem] text-muted">
+                <span className="rounded-full border border-border px-2.5 py-1 font-mono text-[0.625rem] text-muted">
                   {ui.hero.ecgRate}
                 </span>
               </div>
 
-              <div className="relative mt-5 overflow-hidden rounded-2xl border border-white/5 bg-bg/70 p-2">
+              <div className="relative mt-5 overflow-hidden rounded-2xl border border-border bg-bg/70 p-2">
                 <EcgLine
                   state="normal"
                   className="h-32 w-full text-hope sm:h-40"
@@ -128,7 +130,7 @@ export function Hero() {
                   aria-hidden="true"
                   style={{
                     backgroundImage:
-                      "linear-gradient(to right, rgba(244,246,251,0.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(244,246,251,0.18) 1px, transparent 1px)",
+                      "linear-gradient(to right, rgba(11,18,32,0.10) 1px, transparent 1px), linear-gradient(to bottom, rgba(11,18,32,0.10) 1px, transparent 1px)",
                     backgroundSize: "28px 28px",
                   }}
                 />
@@ -138,7 +140,7 @@ export function Hero() {
                 {hero.stats.map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-xl border border-white/10 bg-white/[0.03] p-3"
+                    className="rounded-xl border border-border bg-text/[0.03] p-3"
                   >
                     <dt className="text-[0.625rem] leading-snug text-muted">
                       {stat.label}
@@ -154,7 +156,7 @@ export function Hero() {
                 {ui.hero.statNote}{" "}
                 <a
                   href={`#ref-${hero.statsSourceId}`}
-                  className="underline decoration-white/25 underline-offset-4 transition-colors hover:text-text"
+                  className="underline decoration-text/20 underline-offset-4 transition-colors hover:text-text"
                 >
                   {ui.hero.sourceLink}
                 </a>

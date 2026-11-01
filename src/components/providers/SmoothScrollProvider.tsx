@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from "react";
 import Lenis from "lenis";
 import { gsap, registerGsap, ScrollTrigger } from "@/lib/gsap";
 import { useScrollStore } from "@/lib/scrollStore";
+import { setLenis } from "@/lib/lenis";
 
 const HEADER_OFFSET = -72;
 
@@ -38,6 +39,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
     const onScroll = () => ScrollTrigger.update();
     lenis.on("scroll", onScroll);
+    setLenis(lenis);
 
     // Satu loop untuk Lenis dan GSAP agar pin/scrub tetap sinkron.
     const raf = (time: number) => lenis.raf(time * 1000);
@@ -47,6 +49,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     return () => {
       gsap.ticker.remove(raf);
       lenis.off("scroll", onScroll);
+      setLenis(null);
       lenis.destroy();
     };
   }, [reducedMotion]);

@@ -32,11 +32,12 @@ Versi paket dan alasan kompromi dicatat di [`DECISIONS.md`](./DECISIONS.md).
 src/
   app/            layout, page, globals.css, ikon
   components/
+    animations/   ScrollAnimations (scrub, count-up, SplitText)
     sections/     Hero, Problem, UseCase, CprStory, Closing, References
     three/        Scene, Character, CameraRig, Environment
     ui/           Timer, EcgLine, StatCard, StepPanel, MotionToggle, Disclaimer
     providers/    SmoothScrollProvider (Lenis + ScrollTrigger)
-  lib/            gsap, scrollStore, cameraPath
+  lib/            gsap, scrollStore, lenis, format, cameraPath
   data/           content.ts (semua teks), references.ts
   hooks/          useReducedMotion, useDeviceTier
 public/           og image, aset statis

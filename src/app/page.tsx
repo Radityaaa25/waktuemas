@@ -5,18 +5,19 @@ import { UseCase } from "@/components/sections/UseCase";
 import { CprStory } from "@/components/sections/CprStory";
 import { Closing } from "@/components/sections/Closing";
 import { SiteFooter } from "@/components/sections/SiteFooter";
+import { ScrollAnimations } from "@/components/animations/ScrollAnimations";
 
 export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main id="konten-utama" tabIndex={-1}>
+      <ScrollAnimations>
         <Hero />
         <Problem />
         <UseCase />
         <CprStory />
         <Closing />
-      </main>
+      </ScrollAnimations>
       <SiteFooter />
     </>
   );

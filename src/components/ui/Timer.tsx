@@ -38,7 +38,7 @@ export function Timer({
         ) : null}
       </div>
       <div
-        className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10"
+        className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-text/10"
         aria-hidden="true"
       >
         <div

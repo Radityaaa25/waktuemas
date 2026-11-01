@@ -11,7 +11,7 @@ Diperiksa dengan `npm view <paket> version` sebelum instalasi, bukan dari ingata
 | next | 16.4.3 | rilis stabil terbaru (jalur 16.x) |
 | react | 19.3.1 | sesuai peer Next 16 dan R3F 9 |
 | react-dom | 19.3.1 | — |
-| typescript | 5.9.3 | **kompromi**: 7.0.2 ditolak typescript-eslint; lihat catatan di bawah |
+| typescript | 6.0.3 | TS 7.0.2 ditolak typescript-eslint; TS 6 didukung penuh |
 | tailwindcss | 4.3.3 | CSS-first (`@import "tailwindcss"`, `@theme inline`) |
 | @tailwindcss/postcss | 4.3.3 | versi disamakan dengan tailwindcss |
 | gsap | 3.15.0 | ScrollTrigger + SplitText (gratis sejak 3.13) |
@@ -37,15 +37,15 @@ Diperiksa dengan `npm view <paket> version` sebelum instalasi, bukan dari ingata
 
 `npm install` mengeluarkan beberapa `npm warn ERESOLVE overriding peer dependency` yang berasal dari peer opsional paket 3D (misalnya `expo`, `react-native`) yang tidak dipakai di proyek web ini. `npm ls --depth=0` bersih; tidak ada paket invalid.
 
-### TypeScript 5.9.3 (kompromi dari 7.0.2)
+### TypeScript 6.0.3
 
-Versi stabil terbaru adalah TypeScript 7.0.2. Setelah instalasi, `npm run lint` gagal karena `typescript-eslint` (dipakai `eslint-config-next@16.4.3`) menolak TS 7.0:
+Versi stabil terbaru adalah TypeScript 7.0.2. Namun `typescript-eslint@8.72.1` (dipakai `eslint-config-next@16.4.3`) menolak TS 7:
 
 ```
 typescript-eslint does not support TS 7.0.
 ```
 
-`tsc --noEmit` dan `next build` sendiri berhasil dengan TS 7.0.2. Namun lint adalah syarat PRD §17, sehingga proyek turun ke **TypeScript 5.9.3** (5.x stabil terakhir) agar seluruh toolchain bersih. Ini bukan downgrade diam-diam: versi 7.0.2 sempat dipasang dan diuji. Kembali ke TS 7 setelah typescript-eslint mendukung.
+Paket tersebut secara eksplisit masih mendukung jalur TS 6 (pesan errornya menyebut cara menjalankan typescript-eslint dengan API TS 6). Karena itu proyek memakai **TypeScript 6.0.3**, versi stabil terakhir di jalur 6.x. `tsc --noEmit`, `eslint`, dan `next build` bersih dengan versi ini. Naik ke TS 7 setelah typescript-eslint mendukung.
 
 ## Keputusan teknis
 
@@ -63,6 +63,28 @@ typescript-eslint does not support TS 7.0.
 - Kartu 2 tidak menampilkan angka per menit; hanya arah tren dan label "perkiraan model" sampai angka final dikonfirmasi.
 - Kartu 3 menampilkan "±360 ribu" dengan label perkiraan + sumber sekunder; menunggu verifikasi Kemenkes.
 
+### Tema terang
+
+- Palet memakai latar terang (`--bg #f6f8fc`, `--surface #ffffff`) dengan `color-scheme: light` dan `themeColor #F6F8FC`.
+- Kontras teks utama dijaga di atas 7:1 pada latar terang; teks sekunder memakai `--muted`.
+- Jalur A/B tidak dibedakan lewat warna saja: selalu ada label teks dan ikon (alert/hope).
+- Kartu memakai bayangan halus dan border turunan `--text`; tidak ada blok gelap besar kecuali elemen kecil seperti tombol utama.
+
+### Animasi scroll (Fase 2)
+
+- `ScrollAnimations` membungkus `<main>` dan memakai `useGSAP` + `gsap.matchMedia()` dengan dua kondisi (`isMobile`, `isDesktop`). Saat breakpoint berubah, konteks GSAP dibuat ulang dan `SplitText` di-`revert`.
+- Semua animasi dekoratif memakai `scrub` (bukan autoplay) kecuali intro hero. Intro hero memakai `toggleActions: "play none none reverse"` dan `play()` eksplisit setelah dibuat agar judul tidak tertinggal dalam keadaan `from` (opacity 0) saat halaman dimuat.
+- Count-up memakai `ScrollTrigger.create` + `onUpdate`, dengan teks akhir tetap ada di HTML agar tetap terbaca tanpa JavaScript.
+- `prefers-reduced-motion` dan tombol "Kurangi animasi" mematikan seluruh animasi; konten tetap statis dan lengkap.
+
+### Scroll-story S4
+
+- Tidak memakai pin ScrollTrigger. Track setinggi `400svh` (mobile) / `500svh` (desktop) berisi panel `position: sticky`.
+- Progress 0–0.4 = Jalur A, 0.4–0.5 = rewind (waktu 4:00 → 0:00), 0.5–1 = Jalur B. Store hanya diperbarui saat detik, langkah, jalur, atau fase berubah untuk menghindari render berlebihan.
+- Tabs dan tombol langkah memakai `getLenis()?.scrollTo()` agar berpindah ke progress yang tepat; fallback `window.scrollTo` saat Lenis tidak aktif (reduced motion).
+- Di layar pendek (`max-height: 720px` dan `<lg`), elemen sekunder disembunyikan (badge tab, catatan pratinjau, header/ringkasan StepPanel) agar panel sticky muat tanpa memotong konten. Ringkasan semua langkah kedua jalur tetap tersedia statis di bawah track.
+- Layar kecil tetap menampilkan kanvas di atas panel; desktop memakai dua kolom.
+
 ### Kebijakan aset
 
 - Karakter 3D prosedural dari primitif three.js, tanpa file model.
@@ -73,4 +95,7 @@ typescript-eslint does not support TS 7.0.
 
 | Tanggal | Keputusan | Alasan |
 |---|---|---|
-| 1 Nov 2026 | TypeScript 7.0.2 dipilih | rilis stabil terbaru; diverifikasi lewat build/lint fase 0 |
+| 1 Nov 2026 | TypeScript 6.0.3 | TS 7 ditolak typescript-eslint; TS 6 didukung, build/lint bersih |
+| 1 Nov 2026 | Tema terang penuh | Permintaan terbaru; gelap hanya untuk elemen kecil, kontras dan label jalur tetap terjaga |
+| 1 Nov 2026 | Scroll-story tanpa pin | Sticky CSS lebih sederhana dan stabil untuk tinggi dinamis; pin hanya bila benar-benar diperlukan |
+| 1 Nov 2026 | QA produksi via Firefox BiDi | Menghindari pemasangan browser tambahan; build produksi dipakai karena dev HMR tidak stabil di headless |

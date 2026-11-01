@@ -130,6 +130,7 @@ export function EcgLine({
         strokeLinecap="round"
         strokeLinejoin="round"
         vectorEffect="non-scaling-stroke"
+        pathLength={1}
         data-ecg-path
       />
     </svg>

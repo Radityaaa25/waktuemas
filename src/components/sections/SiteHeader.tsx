@@ -4,7 +4,7 @@ import { MotionToggle } from "@/components/ui/MotionToggle";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-bg/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-bg/85 backdrop-blur-md">
       <div className="page-shell flex h-16 items-center justify-between gap-3">
         <a
           href="#hero"
@@ -43,7 +43,7 @@ export function SiteHeader() {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className="inline-flex min-h-11 items-center rounded-full px-3 text-sm whitespace-nowrap text-muted transition-colors hover:bg-white/5 hover:text-text"
+                  className="inline-flex min-h-11 items-center rounded-full px-3 text-sm whitespace-nowrap text-muted transition-colors hover:bg-text/5 hover:text-text"
                 >
                   {item.label}
                 </a>
@@ -55,20 +55,20 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <MotionToggle />
           <details className="group relative md:hidden">
-            <summary className="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-white/15 text-xs font-medium transition-colors hover:bg-white/5 [&::-webkit-details-marker]:hidden">
+            <summary className="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-border text-xs font-medium transition-colors hover:bg-text/5 [&::-webkit-details-marker]:hidden">
               <Menu aria-hidden="true" className="size-4" />
               <span className="sr-only">{ui.header.navButton}</span>
             </summary>
             <nav
               aria-label={a11y.navLabel}
-              className="absolute right-0 top-[calc(100%+0.5rem)] w-48 rounded-2xl border border-white/10 bg-surface p-2 shadow-2xl"
+              className="absolute right-0 top-[calc(100%+0.5rem)] w-48 rounded-2xl border border-border bg-surface p-2 shadow-2xl"
             >
               <ul>
                 {nav.map((item) => (
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className="flex min-h-11 items-center rounded-xl px-3 text-sm text-muted transition-colors hover:bg-white/5 hover:text-text"
+                      className="flex min-h-11 items-center rounded-xl px-3 text-sm text-muted transition-colors hover:bg-text/5 hover:text-text"
                     >
                       {item.label}
                     </a>

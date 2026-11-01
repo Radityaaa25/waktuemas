@@ -20,7 +20,7 @@ export function Closing() {
     <section
       id="penutup"
       aria-labelledby="penutup-title"
-      className="section-block"
+      className="section-block bg-surface"
     >
       <div className="page-shell space-y-14 md:space-y-20">
         <div className="grid items-end gap-8 lg:grid-cols-12">
@@ -57,7 +57,7 @@ export function Closing() {
                 <a
                   key={entry.number}
                   href={`tel:${entry.number}`}
-                  className="flex min-h-14 min-w-28 flex-col justify-center rounded-2xl border border-white/15 bg-bg/50 px-4 transition-colors hover:border-white/35"
+                  className="flex min-h-14 min-w-28 flex-col justify-center rounded-2xl border border-border bg-bg/50 px-4 transition-colors hover:border-border-strong"
                 >
                   <span className="numeric text-xl font-medium text-text">
                     {entry.number}
@@ -115,11 +115,14 @@ export function Closing() {
             className="mt-6 overflow-x-auto pb-2 [scrollbar-width:thin]"
             data-chain-track
           >
-            <ol className="flex min-w-[52rem] gap-3 lg:min-w-0 lg:grid lg:grid-cols-6">
+            <ol
+              className="flex min-w-[52rem] gap-3 lg:min-w-0 lg:grid lg:grid-cols-6"
+              data-chain-inner
+            >
               {closing.chain.map((node, index) => (
                 <li
                   key={node.id}
-                  className="relative w-52 shrink-0 rounded-2xl border border-white/10 bg-surface p-4 lg:w-auto"
+                  className="relative w-52 shrink-0 rounded-2xl border border-border bg-surface p-4 lg:w-auto"
                   data-chain-node
                 >
                   <span className="numeric text-[0.625rem] text-muted">
@@ -149,7 +152,7 @@ export function Closing() {
             {closing.actions.map((action) => {
               const Icon = ACTION_ICON[action.id as keyof typeof ACTION_ICON] ?? ShieldCheck;
               return (
-                <li key={action.id} className="card-surface p-5">
+                <li key={action.id} className="card-surface p-5" data-action-card>
                   <span className="flex size-10 items-center justify-center rounded-xl border border-hope/30 text-hope">
                     <Icon aria-hidden="true" className="size-5" />
                   </span>
@@ -178,7 +181,7 @@ export function Closing() {
             {closing.credits.map((credit) => (
               <div
                 key={credit.label}
-                className="rounded-2xl border border-white/10 p-4"
+                className="rounded-2xl border border-border p-4"
               >
                 <dt className="text-[0.6875rem] tracking-wide text-muted uppercase">
                   {credit.label}
@@ -194,7 +197,7 @@ export function Closing() {
           </p>
           <a
             href="#hero"
-            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 px-4 text-xs font-medium text-muted transition-colors hover:border-white/35 hover:text-text"
+            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-4 text-xs font-medium text-muted transition-colors hover:border-border-strong hover:text-text"
           >
             <ArrowUp aria-hidden="true" className="size-4" />
             {ui.closing.backToTop}

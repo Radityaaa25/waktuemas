@@ -8,6 +8,11 @@
   --color-alert: var(--alert);
   --color-hope: var(--hope);
   --color-warn: var(--warn);
+  --color-bg-alt: var(--bg-alt);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-sky: var(--sky);
+  --color-violet: var(--violet);
 
   --font-display: var(--font-bricolage);
   --font-sans: var(--font-jakarta);
@@ -18,20 +23,25 @@
 }
 
 :root {
-  --bg: #0b0f1a;
-  --surface: #121826;
-  --text: #f4f6fb;
-  --muted: #9aa3b8;
-  --alert: #ff3b4e;
-  --hope: #2dd4bf;
-  --warn: #ffb020;
+  --bg: #f6f8fc;
+  --bg-alt: #edf2fa;
+  --surface: #ffffff;
+  --text: #0b1220;
+  --muted: #556074;
+  --alert: #d81b3c;
+  --hope: #0f766e;
+  --warn: #a95a05;
+  --sky: #0369a1;
+  --violet: #6d28d9;
 
   --border: color-mix(in oklab, var(--text) 12%, transparent);
-  --border-strong: color-mix(in oklab, var(--text) 22%, transparent);
+  --border-strong: color-mix(in oklab, var(--text) 24%, transparent);
+  --shadow-card: 0 1px 2px rgba(11, 18, 32, 0.04),
+    0 18px 48px -32px rgba(11, 18, 32, 0.35);
   --gutter: clamp(1rem, 4vw, 4rem);
   --measure: 68ch;
   --header-h: 4rem;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 @layer base {
@@ -92,7 +102,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--hope) 35%, transparent);
+    background: color-mix(in oklab, var(--hope) 22%, transparent);
     color: var(--text);
   }
 
@@ -153,6 +163,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
   }
 
   .numeric {
@@ -180,7 +191,82 @@
   }
 }
 
+.rewind-bar {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 1px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 27, 60, 0.65),
+    transparent
+  );
+  opacity: 0;
+  animation: rewind-scan 1.6s linear infinite;
+}
+
+.rewind-bar.bottom-6 {
+  animation-delay: 0.8s;
+}
+
+@keyframes rewind-scan {
+  0% {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.7;
+  }
+  72% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(120px);
+    opacity: 0;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 1023px) {
+  [data-cpr-sticky] {
+    padding-block: 0.25rem;
+  }
+
+  [data-cpr-grid] {
+    margin-top: 0.625rem;
+  }
+
+  [data-cpr-progress] {
+    margin-top: 0.5rem;
+  }
+
+  [data-cpr-tabs] button {
+    min-height: 3.5rem;
+  }
+
+  [data-cpr-tab-badge] {
+    display: none;
+  }
+
+  .cpr-canvas-card {
+    aspect-ratio: 16 / 9;
+  }
+
+  .cpr-preview-note {
+    display: none;
+  }
+
+  [data-step-header],
+  [data-step-summary] {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .rewind-bar {
+    animation: none;
+  }
   *,
   *::before,
   *::after {

@@ -38,7 +38,7 @@ export function StatCard({ card }: { card: StatCardContent }) {
         aria-hidden="true"
       />
       <div className="relative flex items-center justify-between gap-4">
-        <span className={`inline-flex size-11 items-center justify-center rounded-2xl border border-white/10 ${tone.text}`}>
+        <span className={`inline-flex size-11 items-center justify-center rounded-2xl border border-border ${tone.text}`}>
           <Icon aria-hidden="true" className="size-5" />
         </span>
         {card.todoVerify ? (
@@ -48,7 +48,17 @@ export function StatCard({ card }: { card: StatCardContent }) {
         ) : null}
       </div>
 
-      <p className={`numeric relative mt-8 text-[clamp(2.25rem,4.5vw,3.5rem)] leading-none font-medium ${tone.text}`}>
+      <p
+        className={`numeric relative mt-8 text-[clamp(2.25rem,4.5vw,3.5rem)] leading-none font-medium ${tone.text}`}
+        {...(card.count
+          ? {
+              "data-count": card.count.value,
+              "data-count-prefix": card.count.prefix ?? "",
+              "data-count-suffix": card.count.suffix ?? "",
+              "data-count-decimals": card.count.decimals ?? 0,
+            }
+          : {})}
+      >
         {card.value}
       </p>
       <p className="relative mt-2 text-xs tracking-wide text-muted uppercase">
@@ -64,10 +74,10 @@ export function StatCard({ card }: { card: StatCardContent }) {
         {card.description}
       </p>
 
-      <div className="relative mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-white/10 pt-4 text-xs">
+      <div className="relative mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-border pt-4 text-xs">
         <a
           href={`#ref-${card.source.refId}`}
-          className="inline-flex min-h-11 items-center gap-1.5 text-muted underline decoration-white/20 transition-colors hover:text-text"
+          className="inline-flex min-h-11 items-center gap-1.5 text-muted underline decoration-text/20 transition-colors hover:text-text"
         >
           {ui.problem.sourceLabel}: {card.source.text}
         </a>
