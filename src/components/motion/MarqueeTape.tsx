@@ -5,6 +5,7 @@ interface MarqueeTapeProps {
   bg?: string;
   color?: string;
   className?: string;
+  speed?: number;
 }
 
 export function MarqueeTape({
@@ -14,6 +15,7 @@ export function MarqueeTape({
   bg = "var(--sun)",
   color = "var(--ink)",
   className = "",
+  speed = 70,
 }: MarqueeTapeProps) {
   const content = Array.from({ length: repeat })
     .map(() => `${text} ★ `)
@@ -30,7 +32,11 @@ export function MarqueeTape({
       }}
     >
       <div className="flex w-max whitespace-nowrap font-mono text-xs md:text-sm font-black tracking-widest uppercase">
-        <span data-el="marquee-track" className="inline-block animate-[marquee_24s_linear_infinite]">
+        <span
+          data-el="marquee-track"
+          className="inline-block"
+          style={{ animation: `marquee ${speed}s linear infinite` }}
+        >
           {content} {content}
         </span>
       </div>
