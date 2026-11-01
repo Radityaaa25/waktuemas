@@ -170,7 +170,7 @@ export const problem = {
     description:
       "Kurva di bawah adalah ilustrasi dari model penelitian, bukan data pasien tertentu dan bukan prediksi untuk satu individu. Tujuannya menunjukkan arah: semakin cepat CPR dan defibrilasi, semakin besar peluang.",
     axisX: "Waktu sejak kolaps",
-    axisY: "Peluang selamat (ilustratif)",
+    axisY: "Peluang selamat",
     caption:
       "Ilustrasi dari model penelitian Larsen dkk. (1993). Bentuk kurva tidak mewakili angka pasti per menit.",
     sourceId: "larsen-1993",
@@ -506,4 +506,101 @@ export const sectionTitles = {
   useCase: "Situasi",
   cpr: "Tata cara CPR",
   closing: "Penutup",
+} as const;
+
+export const ui = {
+  header: {
+    brandAria: "4 Menit Emas \u2014 kembali ke hero",
+    navAria: a11y.navLabel,
+    navButton: "Bagian",
+    motionShort: "Animasi",
+  },
+  hero: {
+    sourceLink: "Baca sumbernya",
+    ecgBadge: "EKG \u00b7 Ilustrasi",
+    ecgRate: "72 BPM",
+    secondaryCta: "Lihat langkahnya",
+    scrollTag: "SCROLL",
+    secondaryHref: "#cpr",
+    statNote: hero.statsSource,
+  },
+  problem: {
+    cardsLabel: "Ringkasan angka",
+    fasterLabel: "Lebih cepat ditolong",
+    slowerLabel: "Semakin lama tanpa pertolongan",
+    illustrativeLabel: "ILUSTRATIF",
+    sourceLabel: "Sumber",
+    todoBadge: "Perlu verifikasi",
+    todoNote:
+      "Angka bertanda ini masih dirujuk dari sumber sekunder atau model dan belum diverifikasi ke teks primer.",
+    chartSeeSource: "Lihat sumber grafik",
+    chartAria:
+      "Grafik ilustratif yang menunjukkan peluang selamat menurun seiring bertambahnya waktu sejak kolaps tanpa pertolongan.",
+  },
+  a11yScene: {
+    useCaseScene:
+      "Ilustrasi suasana kantin kampus saat seseorang jatuh dari kursi. Beberapa orang berdiri di sekitarnya, satu orang mulai berlutut.",
+    cprPathA:
+      "Ilustrasi prosedural: korban terbaring sendirian sementara beberapa orang di sekitarnya hanya berdiri memandang.",
+    cprPathB:
+      "Ilustrasi prosedural: korban terbaring, seorang penolong berlutut di samping dada, dan seorang penolong kedua membawa AED.",
+  },
+  useCase: {
+    visualLabel: "Ilustrasi suasana kantin kampus saat seseorang kolaps",
+    beatsLabel: "Detik-detik awal",
+    locationTag: "Kantin \u00b7 12:40",
+    neutralityNote:
+      "Cerita ini fiktif dan umum. Tidak ada pihak yang disalahkan; tujuan kami adalah menunjukkan pentingnya pengetahuan dasar.",
+  },
+  cpr: {
+    tabsLabel: "Pilih jalur cerita",
+    timelineLabel: "Alur waktu",
+    currentLabel: "Langkah aktif",
+    cameraLabel: "Sudut kamera",
+    ecgPrefix: "EKG",
+    previewLabel: "Pratinjau adegan",
+    pathATag: "JALUR A \u00b7 TANPA PENOLONG",
+    pathBTag: "JALUR B \u00b7 ADA PENOLONG",
+    previewNote:
+      "Ilustrasi placeholder. Adegan tiga dimensi interaktif ditambahkan pada fase berikutnya.",
+    timerTotal: "dari 4:00",
+    selectHint:
+      "Pilih langkah untuk melihat ringkasannya. Pada versi final, langkah bergerak mengikuti gulir.",
+    rewindToB: "Putar ulang ke 0:00 \u00b7 Jalur B",
+    rewindToA: "Bandingkan dengan Jalur A",
+    backTitle: "Kembali ke jalur tanpa penolong.",
+    backDescription:
+      "Lihat lagi apa yang terjadi ketika menit-menit awal lewat tanpa kompresi dada.",
+    outcomeLabel: "Hasil jalur",
+    guidanceLabel: "Panduan dewasa",
+    guidanceSource: "AHA 2025 Adult Basic Life Support",
+  },
+  closing: {
+    stepsLabel: "Lima langkah",
+    chainLabel: "Rantai kelangsungan hidup",
+    actionsLabel: "Aksi nyata",
+    referencesLabel: "Daftar referensi",
+    disclaimerLabel: "Batas penggunaan",
+    creditLabel: "Kredit",
+    backToTop: "Kembali ke atas",
+    emergencyLabel: site.emergency.title,
+    copyright: "\u00a9 2026 Tim 4 Menit Emas. Dibuat untuk INVOFEST 2026.",
+    todoLegend:
+      "Tanda \u201cPerlu verifikasi\u201d berarti angka belum dikonfirmasi ke sumber primer.",
+    openRef: "Buka detail referensi",
+    swipeHint: "Geser untuk melihat seluruh rantai.",
+  },
+  footer: {
+    navLabel: "Navigasi footer",
+    navHeading: "Navigasi",
+    stackNote:
+      "Dibangun dengan Next.js, GSAP, Lenis, dan three.js. Karakter 3D prosedural tanpa aset model pihak ketiga.",
+    licenseNote:
+      "Font: Bricolage Grotesque, Plus Jakarta Sans, JetBrains Mono (SIL OFL). Ikon: Lucide (ISC).",
+  },
+  references: {
+    useLabel: "Dipakai untuk",
+    noteLabel: "Catatan",
+    identifierLabel: "Identitas",
+  },
 } as const;

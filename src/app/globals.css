@@ -35,6 +35,10 @@
 }
 
 @layer base {
+  [id] {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+
   *,
   *::before,
   *::after {

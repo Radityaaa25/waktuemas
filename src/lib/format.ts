@@ -1,0 +1,6 @@
+export function formatClock(totalSeconds: number): string {
+  const safe = Math.max(0, Math.min(totalSeconds, 5999));
+  const minutes = Math.floor(safe / 60);
+  const seconds = Math.floor(safe % 60);
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
