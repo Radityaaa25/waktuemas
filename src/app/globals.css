@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-alert: var(--alert);
+  --color-hope: var(--hope);
+  --color-warn: var(--warn);
+
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-jetbrains);
+
+  --radius-card: 1.25rem;
+  --radius-panel: 1.5rem;
+}
+
+:root {
+  --bg: #0b0f1a;
+  --surface: #121826;
+  --text: #f4f6fb;
+  --muted: #9aa3b8;
+  --alert: #ff3b4e;
+  --hope: #2dd4bf;
+  --warn: #ffb020;
+
+  --border: color-mix(in oklab, var(--text) 12%, transparent);
+  --border-strong: color-mix(in oklab, var(--text) 22%, transparent);
+  --gutter: clamp(1rem, 4vw, 4rem);
+  --measure: 68ch;
+  --header-h: 4rem;
+  color-scheme: dark;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    min-height: 100svh;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-jakarta), system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-bricolage), var(--font-jakarta), sans-serif;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--hope) 35%, transparent);
+    color: var(--text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--warn);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  svg {
+    display: block;
+  }
+}
+
+@layer components {
+  .page-shell {
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .section-block {
+    position: relative;
+    padding-block: clamp(4.5rem, 10vw, 9rem);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .lede {
+    max-width: var(--measure);
+    color: color-mix(in oklab, var(--text) 82%, var(--muted));
+    font-size: clamp(1.0625rem, 0.5vw + 1rem, 1.25rem);
+    line-height: 1.65;
+  }
+
+  .card-surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  .numeric {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    transform: translateY(-200%);
+    border-radius: 999px;
+    background: var(--text);
+    color: var(--bg);
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    transition: transform 150ms ease;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
