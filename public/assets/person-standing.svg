@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 280" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Kepala & Rambut -->
+  <path d="M48 50 C44 32, 76 32, 72 50 C70 56, 50 56, 48 50 Z" fill="currentColor" fill-opacity="0.15" />
+  <circle cx="60" cy="54" r="22" fill="#FFE3D6" />
+  <path d="M44 48 C48 36, 72 36, 76 48 C72 44, 48 44, 44 48 Z" fill="#1E2A4A" />
+  <!-- Mata & Senyum tipis -->
+  <circle cx="53" cy="55" r="2.5" fill="#1E2A4A" stroke="none" />
+  <circle cx="67" cy="55" r="2.5" fill="#1E2A4A" stroke="none" />
+  <path d="M56 63 Q60 67 64 63" fill="none" stroke="#1E2A4A" stroke-width="2" />
+  <!-- Leher -->
+  <path d="M56 76 L56 86 M64 76 L64 86" />
+  <!-- Badan / Baju -->
+  <path d="M40 92 C42 86, 78 86, 80 92 L84 165 C84 170, 36 170, 36 165 Z" fill="#8FD3FF" />
+  <!-- Kerah -->
+  <path d="M52 86 L60 100 L68 86" fill="#FFF8EE" />
+  <!-- Lengan Kiri & Kanan -->
+  <path d="M38 94 L22 145 C20 152, 28 156, 32 148 L40 120" fill="#8FD3FF" />
+  <circle cx="23" cy="155" r="6" fill="#FFE3D6" />
+  <path d="M82 94 L98 145 C100 152, 92 156, 88 148 L80 120" fill="#8FD3FF" />
+  <circle cx="97" cy="155" r="6" fill="#FFE3D6" />
+  <!-- Celana Panjang -->
+  <path d="M38 168 L42 245 C42 250, 56 250, 56 245 L58 185 L62 185 L64 245 C64 250, 78 250, 78 245 L82 168 Z" fill="#1E2A4A" />
+  <!-- Sepatu -->
+  <ellipse cx="49" cy="254" rx="11" ry="6" fill="#FFF8EE" />
+  <ellipse cx="71" cy="254" rx="11" ry="6" fill="#FFF8EE" />
+</svg>
