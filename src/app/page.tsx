@@ -2,7 +2,6 @@
 
 import { Scene } from "@/components/story/Scene";
 import { StoryProgressBar } from "@/components/story/StoryProgressBar";
-import { MotionToggle } from "@/components/ui/MotionToggle";
 import {
   buildScene0,
   setupScene0Ambient,
@@ -24,7 +23,6 @@ export default function Home() {
     <>
       {/* UI Minimal: Progress Bar di atas & Tombol Aksesibilitas di pojok */}
       <StoryProgressBar />
-      <MotionToggle />
 
       <main id="konten-utama" tabIndex={-1} className="relative w-full">
         {/* Scene 0: Sampul (Latar Paper Krem) */}

@@ -5,7 +5,7 @@ import {
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
-import { a11y, site } from "@/data/content";
+import { site } from "@/data/content";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -79,9 +79,6 @@ export default function RootLayout({
       className={`${bricolage.variable} ${jakarta.variable} ${jetbrains.variable}`}
     >
       <body>
-        <a className="skip-link" href="#konten-utama">
-          {a11y.skipToContent}
-        </a>
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
