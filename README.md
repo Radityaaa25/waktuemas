@@ -18,9 +18,9 @@ npm run typecheck
 
 - Next.js 16 (App Router, Turbopack) + React 19 + TypeScript strict
 - Tailwind CSS v4 (CSS-first) + CSS variables
-- GSAP 3 + ScrollTrigger + `@gsap/react`
+- GSAP 3 + ScrollTrigger + `@gsap/react` (animasi per ketukan cerita)
 - Lenis (sinkron dengan `gsap.ticker` dan ScrollTrigger)
-- three.js + `@react-three/fiber` + `@react-three/drei` (3D prosedural)
+- Motion graphic SVG prosedural, tanpa aset gambar pihak ketiga
 - zustand, lucide-react
 - Font: Bricolage Grotesque, Plus Jakarta Sans, JetBrains Mono via `next/font/google`
 
@@ -32,14 +32,13 @@ Versi paket dan alasan kompromi dicatat di [`DECISIONS.md`](./DECISIONS.md).
 src/
   app/            layout, page, globals.css, ikon
   components/
-    animations/   ScrollAnimations (scrub, count-up, SplitText)
-    sections/     Hero, Problem, UseCase, CprStory, Closing, References
-    three/        Scene, Character, CameraRig, Environment
-    ui/           Timer, EcgLine, StatCard, StepPanel, MotionToggle, Disclaimer
+    story/        StoryStage, SceneVisuals, StoryDetails
+    sections/     References
+    ui/           MotionToggle, Disclaimer
     providers/    SmoothScrollProvider (Lenis + ScrollTrigger)
-  lib/            gsap, scrollStore, lenis, format, cameraPath
-  data/           content.ts (semua teks), references.ts
-  hooks/          useReducedMotion, useDeviceTier
+  lib/            gsap, scrollStore, lenis, format
+  data/           story.ts (alur cerita), content.ts, references.ts
+  hooks/          useReducedMotion
 public/           og image, aset statis
 ```
 
@@ -52,7 +51,7 @@ public/           og image, aset statis
 
 ## Kredit dan lisensi
 
-- Karakter 3D dibuat prosedural dari primitif three.js — tanpa aset model pihak ketiga.
+- Visual adegan dibuat prosedural dengan SVG — tanpa aset gambar pihak ketiga.
 - Font: Bricolage Grotesque, Plus Jakarta Sans, JetBrains Mono (SIL Open Font License).
 - Ikon: [Lucide](https://lucide.dev) (ISC License).
 - Animasi: GSAP/ScrollTrigger dan Lenis sesuai lisensi masing-masing.
@@ -60,4 +59,4 @@ public/           og image, aset statis
 
 ## Status pengembangan
 
-Dikerjakan per fase: setup → kerangka 2D → animasi scroll → scene 3D → polish/aksesibilitas → deploy. Lihat riwayat commit untuk progres.
+Arah saat ini: **scrollytelling sinematik berbasis ketukan** — 7 scene, 13 ketukan, teks minimal, motion graphic SVG. Setiap scroll memicu satu ketukan; elemen masuk dari arah berbeda dan adegan berganti. Berikutnya: polish suara visual, QA lintas perangkat, dan deploy.

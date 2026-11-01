@@ -1,24 +1,11 @@
-import { SiteHeader } from "@/components/sections/SiteHeader";
-import { Hero } from "@/components/sections/Hero";
-import { Problem } from "@/components/sections/Problem";
-import { UseCase } from "@/components/sections/UseCase";
-import { CprStory } from "@/components/sections/CprStory";
-import { Closing } from "@/components/sections/Closing";
-import { SiteFooter } from "@/components/sections/SiteFooter";
-import { ScrollAnimations } from "@/components/animations/ScrollAnimations";
+import { StoryStage } from "@/components/story/StoryStage";
+import { StoryDetails } from "@/components/story/StoryDetails";
 
 export default function Home() {
   return (
-    <>
-      <SiteHeader />
-      <ScrollAnimations>
-        <Hero />
-        <Problem />
-        <UseCase />
-        <CprStory />
-        <Closing />
-      </ScrollAnimations>
-      <SiteFooter />
-    </>
+    <main id="konten-utama" tabIndex={-1}>
+      <StoryStage />
+      <StoryDetails />
+    </main>
   );
 }

@@ -1,55 +1,30 @@
 import { create } from "zustand";
-import type { EcgState, StoryPath } from "@/data/content";
-
-export type StoryPhase = "A" | "rewind" | "B";
+import type { SceneId } from "@/data/story";
 
 interface ScrollState {
   progress: number;
-  path: StoryPath;
-  step: number;
-  storyTime: number;
-  storyPhase: StoryPhase;
-  ecgState: EcgState;
-  inStory: boolean;
+  activeScene: SceneId;
+  sceneProgress: number;
   reducedMotion: boolean;
-  scenePaused: boolean;
+  paused: boolean;
   setProgress: (progress: number) => void;
-  setPath: (path: StoryPath) => void;
-  setStep: (step: number) => void;
-  setEcgState: (state: EcgState) => void;
-  setStory: (update: {
-    path?: StoryPath;
-    step?: number;
-    storyTime?: number;
-    storyPhase?: StoryPhase;
-    ecgState?: EcgState;
-    progress?: number;
-  }) => void;
-  setInStory: (inStory: boolean) => void;
+  setScene: (scene: SceneId, sceneProgress: number, progress: number) => void;
   setReducedMotion: (reduced: boolean) => void;
   toggleReducedMotion: () => void;
-  toggleScenePaused: () => void;
+  togglePaused: () => void;
 }
 
 export const useScrollStore = create<ScrollState>((set) => ({
   progress: 0,
-  path: "A",
-  step: 0,
-  storyTime: 0,
-  storyPhase: "A",
-  ecgState: "irregular",
-  inStory: false,
+  activeScene: "opening",
+  sceneProgress: 0,
   reducedMotion: false,
-  scenePaused: false,
+  paused: false,
   setProgress: (progress) => set({ progress }),
-  setPath: (path) => set({ path }),
-  setStep: (step) => set({ step }),
-  setEcgState: (ecgState) => set({ ecgState }),
-  setStory: (update) => set(update),
-  setInStory: (inStory) => set({ inStory }),
+  setScene: (activeScene, sceneProgress, progress) =>
+    set({ activeScene, sceneProgress, progress }),
   setReducedMotion: (reducedMotion) => set({ reducedMotion }),
   toggleReducedMotion: () =>
     set((state) => ({ reducedMotion: !state.reducedMotion })),
-  toggleScenePaused: () =>
-    set((state) => ({ scenePaused: !state.scenePaused })),
+  togglePaused: () => set((state) => ({ paused: !state.paused })),
 }));
