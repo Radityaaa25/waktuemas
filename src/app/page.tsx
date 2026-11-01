@@ -5,21 +5,24 @@ import { StoryProgressBar } from "@/components/story/StoryProgressBar";
 import { MotionToggle } from "@/components/ui/MotionToggle";
 import {
   buildScene0,
+  setupScene0Ambient,
   Scene0Content,
 } from "@/components/story/scenes/Scene0Sampul";
 import {
   buildScene1,
+  setupScene1Ambient,
   Scene1TahukahKamu,
 } from "@/components/story/scenes/Scene1TahukahKamu";
 import {
   buildScene6,
+  setupScene6Ambient,
   Scene6TibaTiba,
 } from "@/components/story/scenes/Scene6TibaTiba";
 
 export default function Home() {
   return (
     <>
-      {/* Elemen UI Minimal: Progress Bar di atas & Tombol Aksesibilitas di pojok */}
+      {/* UI Minimal: Progress Bar di atas & Tombol Aksesibilitas di pojok */}
       <StoryProgressBar />
       <MotionToggle />
 
@@ -28,8 +31,9 @@ export default function Home() {
         <Scene
           id="scene-0-sampul"
           bg="var(--paper)"
-          length="+=250%"
+          length="+=260%"
           build={buildScene0}
+          ambientSetup={setupScene0Ambient}
         >
           <Scene0Content />
         </Scene>
@@ -40,6 +44,7 @@ export default function Home() {
           bg="var(--sky)"
           length="+=300%"
           build={buildScene1}
+          ambientSetup={setupScene1Ambient}
         >
           <Scene1TahukahKamu />
         </Scene>
@@ -50,6 +55,7 @@ export default function Home() {
           bg="var(--cool)"
           length="+=300%"
           build={buildScene6}
+          ambientSetup={setupScene6Ambient}
         >
           <Scene6TibaTiba />
         </Scene>

@@ -4,12 +4,14 @@ import { useRef, type ReactNode } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { useScrollStore } from "@/lib/scrollStore";
 import type { SceneBuildFn } from "@/lib/sceneTimeline";
+import type { AmbientController } from "@/lib/ambient";
 
 interface SceneProps {
   id: string;
   bg?: string;
   length?: string; // misalnya "+=250%", default "+=300%"
   build?: SceneBuildFn;
+  ambientSetup?: (stage: HTMLElement) => AmbientController | void;
   children: ReactNode;
   className?: string;
 }
@@ -19,6 +21,7 @@ export function Scene({
   bg = "var(--paper)",
   length = "+=300%",
   build,
+  ambientSetup,
   children,
   className = "",
 }: SceneProps) {
@@ -42,6 +45,12 @@ export function Scene({
         (context) => {
           const isMobile = Boolean(context.conditions?.isMobile);
 
+          // Siapkan controller ambient loop jika disediakan
+          let ambientCtrl: AmbientController | void = undefined;
+          if (ambientSetup) {
+            ambientCtrl = ambientSetup(stage);
+          }
+
           // Timeline utama diikat ke ScrollTrigger dengan pin
           const tl = gsap.timeline({
             defaults: { ease: "none" },
@@ -53,6 +62,12 @@ export function Scene({
               scrub: 1,
               anticipatePin: 1,
               invalidateOnRefresh: true,
+              onToggle: (self) => {
+                if (ambientCtrl) {
+                  if (self.isActive) ambientCtrl.play();
+                  else ambientCtrl.pause();
+                }
+              },
             },
           });
 
@@ -63,6 +78,7 @@ export function Scene({
           return () => {
             tl.scrollTrigger?.kill();
             tl.kill();
+            if (ambientCtrl) ambientCtrl.kill();
           };
         },
       );
